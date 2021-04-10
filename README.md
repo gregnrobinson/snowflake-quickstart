@@ -21,8 +21,8 @@ In order to use Snowflake and query a dataset, we need to have a data set to wor
       *Note: Make sure you are logged into the SDK. Run ```gcloud auth login``` to connect to GCP.*
 
       When the upload has completed, confirm the file has been uploaded to the correct spot.
-
-      ![Screen Shot 2021-04-09 at 10.24.43 PM|690x185](https://community.phronesis.cloud/t/using-snowflake-to-import-and-query-a-large-dataset-from-gcs/26)
+      
+      ![alt text](https://community.phronesis.cloud/uploads/default/original/1X/9235e443027b68309b0bc84bc00f1e81fd11b800.png)
 
 ## Configure Snowflake
 
