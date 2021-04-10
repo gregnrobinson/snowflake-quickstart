@@ -3,6 +3,7 @@ use role accountadmin;
 create database if not exists redditdb;
 create warehouse if not exists redditwh with warehouse_size = 'xsmall' auto_suspend = 60 initially_suspended = true;
 use schema redditdb.public;
+use database redditdb;
 
 CREATE TABLE REDDIT_ACCOUNTS (
   id number,
@@ -26,7 +27,7 @@ grant usage on integration gcp_storage to sysadmin;
 use role sysadmin;
 
 //CSV DATA IMPORT EXAMPLE
-create or replace file format my_csv_format
+create or replace file format reddit_accounts_csv
       type = csv
       field_delimiter = ','
       skip_header = 1
@@ -37,23 +38,7 @@ create or replace file format my_csv_format
 create stage my_gcs_stage
   url = 'gcs://snowflake905/reddit_accounts'
   storage_integration = gcp_storage
-  file_format = my_csv_format;
+  file_format = reddit_accounts_csv;
 
 copy into REDDIT_ACCOUNTS
   from @my_gcs_stage
-  
-//JSON DATA IMPORT EXAMPLE
-create or replace file format my_json_format
-type = 'JSON' commpression = 'gzip' file_extension = 'JSON'
-;
-      
-create stage my_gcs_stage_json
-  url = 'gcs://snowflake905/reddit_accounts'
-  storage_integration = gcp_storage
-  file_format = my_json_format;
-  
-COPY INTO JSON_DATA
-from (select $1:field1, $1:field2 from @my_gcs_stage_json)
-
-
-SELECT * FROM REDDIT_ACCOUNTS
