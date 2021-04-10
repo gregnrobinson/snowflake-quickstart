@@ -128,6 +128,7 @@ We will create a role with only the permissions required to get data from a stor
      from @my_gcs_stage
    ```
 Looking at the query, it took 2 minutes and 12 seconds to import 69,382,538 rows into our table from a compressed csv file.
+
 ![image](https://user-images.githubusercontent.com/26353407/114261714-12924d00-99aa-11eb-99b8-8642e5811ec2.png)
 
 # Querying the Data
