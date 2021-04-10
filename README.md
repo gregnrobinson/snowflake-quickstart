@@ -22,7 +22,9 @@ In order to use Snowflake and query a dataset, we need to have a data set to wor
       *Note: Make sure you are logged into the SDK. Run ```gcloud auth login``` to connect to GCP.*
 
       When the upload has completed, confirm the file has been uploaded to the correct spot.
-
+      
+      ![alt text](https://community.phronesis.cloud/uploads/default/original/1X/172cb49c1d855dbb6ce56cfa589e5a15a4ec7940.png)
+      
 ## Configure Snowflake
 
 We are now ready to configure snowflake so we can ingest the dataset directly from GCS. Head on over to the Snowflake Console.
@@ -66,7 +68,7 @@ We are now ready to configure snowflake so we can ingest the dataset directly fr
     ```
    DESC STORAGE INTEGRATION gcp_storage;
    ```
-   ![Screen Shot 2021-04-09 at 10.58.45 PM|690x225, 100%](upload://4qnLiLmJwYTGDQg9IpDUvq3lTxX.png) 
+   ![alt text](https://community.phronesis.cloud/uploads/default/original/1X/1f042ec477086c63a30bb16bb00629d0d0f6861d.png)
 
 # Create/Assign an IAM Role
 
@@ -90,7 +92,7 @@ We will create a role with only the permissions required to get data from a stor
    - Select a bucket to configure for access.
    - Click SHOW INFO PANEL in the upper-right corner. The information panel for the bucket slides out.
    - In the Add members field, paste the service account we retrieved from Snowflake.
-     ![image|559x498](upload://uMhlvfmb53nu48H9dcdAGbMvzXI.png) 
+     ![alt text](https://community.phronesis.cloud/uploads/default/original/1X/d7b65a82a6f7c0db21f578bf9e7fc429fac19f2a.png)
    - Click save.
 
 # Import the Dataset from GCS
@@ -126,6 +128,7 @@ We will create a role with only the permissions required to get data from a stor
      from @my_gcs_stage
    ```
 Looking at the query, it took 2 minutes and 12 seconds to import 69,382,538 rows into our table from a compressed csv file.
+![image](https://user-images.githubusercontent.com/26353407/114261714-12924d00-99aa-11eb-99b8-8642e5811ec2.png)
 
 # Querying the Data
 Return all reddit usernames that contain greg in them.
