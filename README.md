@@ -2,8 +2,9 @@
 
 Snowflake has been appearing all over my linkedin as of late so I thought I would dig into what it is and how it works. Snowflake at its base is a cloud native data platform that removes much of the operational overhead. You can chose to deploy the Snowflake stack on AWS, Azure or GCP. The Stack deployment is completely abstracted from the end user and once you sign up you can start creating warehouses and databases immediately. For more information on Snowflake go [here](https://docs.snowflake.com/en/user-guide-intro.html)
 
-
 In order to use Snowflake and query a dataset, we need to have a data set to work with. This walkthrough will explain how you can import large datasets from object storage in GCS directly into a Snowflake table.
+
+![alt text](https://community.phronesis.cloud/uploads/default/original/1X/9235e443027b68309b0bc84bc00f1e81fd11b800.png)
 
 # Prepare the Environment
 
@@ -21,8 +22,6 @@ In order to use Snowflake and query a dataset, we need to have a data set to wor
       *Note: Make sure you are logged into the SDK. Run ```gcloud auth login``` to connect to GCP.*
 
       When the upload has completed, confirm the file has been uploaded to the correct spot.
-      
-      ![alt text](https://community.phronesis.cloud/uploads/default/original/1X/9235e443027b68309b0bc84bc00f1e81fd11b800.png)
 
 ## Configure Snowflake
 
