@@ -5,8 +5,6 @@ Snowflake has been appearing all over my linkedin as of late so I thought I woul
 
 In order to use Snowflake and query a dataset, we need to have a data set to work with. This walkthrough will explain how you can import large datasets from object storage in GCS directly into a Snowflake table.
 
-![image|690x260](upload://kRraJ2BjP8p0MHRh60TSVXyBPKU.png) 
-
 # Prepare the Environment
 
 1. Go to https://snowflake.com and sign up for a free trial. Snowflake will give you a 30 day trial with no credit card required. You will be asked to chose a cloud platform to host the Snowflake environment. Since we are using GCS as the data source chose Google Cloud Platform.
@@ -129,8 +127,6 @@ We will create a role with only the permissions required to get data from a stor
      from @my_gcs_stage
    ```
 Looking at the query, it took 2 minutes and 12 seconds to import 69,382,538 rows into our table from a compressed csv file.
-
-![Screen Shot 2021-04-09 at 11.38.45 PM|690x202](upload://tC1IluQRKhtwtNFq3eARa43suEG.png)
 
 # Querying the Data
 Return all reddit usernames that contain greg in them.
