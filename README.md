@@ -22,7 +22,7 @@ In order to use Snowflake and query a dataset, we need to have a data set to wor
 
       When the upload has completed, confirm the file has been uploaded to the correct spot.
 
-      ![Screen Shot 2021-04-09 at 10.24.43 PM|690x185](upload://3j0LiH0PglbtpEMJF7Nv2zHSkGA.png)
+      ![Screen Shot 2021-04-09 at 10.24.43 PM|690x185](https://community.phronesis.cloud/t/using-snowflake-to-import-and-query-a-large-dataset-from-gcs/26)
 
 ## Configure Snowflake
 
