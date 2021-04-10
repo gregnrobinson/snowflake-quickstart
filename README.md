@@ -29,12 +29,12 @@ In order to use Snowflake and query a dataset, we need to have a data set to wor
 
 We are now ready to configure snowflake so we can ingest the dataset directly from GCS. Head on over to the Snowflake Console.
 
-1. First thing we need to do is elevate the Snowflake role so we can create a database, schemas and table. Run the following command in worksheet to use the role Account Admin. You can highlight the code you want to run and when you select run it will only execute what was highlighted in the worksheet.
+1. First thing we need to do is elevate the Snowflake role so we can create a database, schema and table. Run the following command in your Snowflake worksheet to use the ***accountadmin*** role. You can highlight the code you want to run and when you select run, it will only execute what was highlighted in the worksheet.
    ```
    use role accountadmin;
    ```
 
-2. Now we can go ahead and create our database, warehouse and schema. The warehouse is the actual compute that will be used to execute queries against our data set. We don't need anything excessive for the queries we will run but imagine a large company that gets millions of calls against a dataset from various sources. Separate warehouses for each database or application can isolate traffic which improves resiliency.
+2. Now we can go ahead and create our database, warehouse and schema. The warehouse is the actual compute that will be used to execute queries against our data set. We don't need anything excessive for the queries we will run but imagine a large company that gets millions of calls against a dataset from various sources. Separate warehouses for each database or application can isolate traffic, which improves resiliency.
    ```
    create database if not exists redditdb;
    create warehouse if not exists redditwh with warehouse_size = 'xsmall' auto_suspend = 60 
@@ -43,7 +43,7 @@ We are now ready to configure snowflake so we can ingest the dataset directly fr
    use database redditdb;
    ```
 
-3. For our dataset to import properly we need to structure our table with the correct column names and data types. In order to determine the required columns I peaked at the csv and matched the names for my table.
+3. For our dataset to import properly, we need to structure our table with the correct column names and data types. In order to determine the required columns, I peaked at the CSV and matched the names for my table.
     ```
     CREATE TABLE REDDIT_ACCOUNTS (
       id number,
@@ -55,7 +55,7 @@ We are now ready to configure snowflake so we can ingest the dataset directly fr
    )
    ```
 
-4. Snowflake has a streamlined way for you to grant their GCP stack to your GCS bucket. The commands below will create a storage integration for GCS and it will generate a service account that we will add to our IAM.
+4. Snowflake has a streamlined way for you to grant their data platform to our GCS bucket. The commands below will create a storage integration for GCS and will generate a service account that we will add to IAM.
     ```
    CREATE STORAGE INTEGRATION gcp_storage
       TYPE = EXTERNAL_STAGE
@@ -72,7 +72,7 @@ We are now ready to configure snowflake so we can ingest the dataset directly fr
 
 # Create/Assign an IAM Role
 
-We will create a role with only the permissions required to get data from a storage account followed by assigning the role to the service account. 
+We will create a role with only the permissions required, followed by assigning the role to the service account. 
 
 1. Create a custom role that has the permissions required to access the dataset.
 
@@ -97,13 +97,13 @@ We will create a role with only the permissions required to get data from a stor
 
 # Import the Dataset from GCS
 
-1. All that is left is for us to grant the integration access to a Snowflake account. In our case we will use the builtin ***sysadmin*** role.
+1. Grant the integration to a Snowflake account. In our case we will use the builtin ***sysadmin*** account.
    ```
    grant usage on integration gcp_storage to sysadmin;
    use role sysadmin;
    ```
 
-2. In order for the data to be processed properly, we need to specify how the data structured and also identify the type of compression so Snowflake can decompress the data.
+2. In order for the data to be processed properly, we need to specify how the data is structured and also identify the type of compression so Snowflake can decompress the data.
    ```
    create or replace file format reddit_accounts_csv
       type = csv
@@ -122,7 +122,7 @@ We will create a role with only the permissions required to get data from a stor
      file_format = reddit_accounts_csv;   
    ```
 
-4. Finally, copy the data into the REDDIT_ACCOUNTS table using the stage created above.
+4. Finally, copy the data into the *REDDIT_ACCOUNTS* table using the stage created above.
    ```
    copy into REDDIT_ACCOUNTS
      from @my_gcs_stage
